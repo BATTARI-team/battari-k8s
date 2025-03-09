@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: summarize-conversation
-        image: takuto1127/battari-summarize-conversation:latest
+        image: takuto1127/battari-summarize-conversation:1.1
         ports:
         - containerPort: 8080
         volumeMounts:
