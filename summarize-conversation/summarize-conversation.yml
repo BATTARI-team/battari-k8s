@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: battari-summarize-conversation
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 31175
+    protocol: TCP
+    name: http
+  selector:
+    app: battari-summarize-conversation

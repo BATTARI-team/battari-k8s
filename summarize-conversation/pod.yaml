@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: battari-summarize-conversation
+spec:
+  selector:
+    matchLabels:
+      app: battari-summarize-conversation
+  replicas: 1 # tells deployment to run 1 pod matching the template
+  template:
+    metadata:
+      labels:
+        app: battari-summarize-conversation
+    spec:
+      containers:
+      - name: summarize-conversation
+        image: takuto1127/battari-summarize-conversation:latest
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: google-credentials
+          mountPath: /etc/cred
+        env:
+          - name: OPENAI_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: battari-openai-key
+                key: BATTARI_OPENAI_API_KEY
+          - name: GOOGLE_APPLICATION_CREDENTIALS
+            value: "/etc/cred/google-credentials.json"
+      volumes:
+      - name: google-credentials
+        secret:
+          secretName: csharp-google-credentials
