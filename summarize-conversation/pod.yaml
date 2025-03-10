@@ -29,7 +29,7 @@ spec:
           - name: GOOGLE_APPLICATION_CREDENTIALS
             value: "/etc/cred/google-credentials.json"
           - name: MAIN_BACKEND_URL
-            value: "https://dev-battari.takutk.shop
+            value: "https://dev-battari.takutk.shop"
       volumes:
       - name: google-credentials
         secret:
