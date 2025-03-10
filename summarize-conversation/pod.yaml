@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: summarize-conversation
-        image: takuto1127/battari-summarize-conversation:1.1
+        image: takuto1127/battari-summarize-conversation:1.1.1
         ports:
         - containerPort: 8080
         volumeMounts:
@@ -28,6 +28,8 @@ spec:
                 key: BATTARI_OPENAI_API_KEY
           - name: GOOGLE_APPLICATION_CREDENTIALS
             value: "/etc/cred/google-credentials.json"
+          - name: MAIN_BACKEND_URL
+            value: "https://dev-battari.takutk.shop
       volumes:
       - name: google-credentials
         secret:
